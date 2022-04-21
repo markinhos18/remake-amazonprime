@@ -23,7 +23,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="navbar absolute top-0 left-0 grid grid-cols-5 items-center w-full py-12 px-40">
+    <nav className="navbar absolute top-0 left-0 grid grid-cols-5 items-center w-full py-12 container-fluid px-16">
       <div className="col-span-4 justify-self-start flex items-center gap-8">
         <h1 className="hidden">Amazon Prime</h1>
         <img src={logo} className="w-1/6" alt="Amazon Prime" />
@@ -37,8 +37,8 @@ const NavBar = () => {
                 onClick={handleClick}
               />
               <input
-                className={`w-5/6 transition-all duration-500 ease-in-out bg-sky-900/80 rounded p-4 absolute -bottom-4 left-10 ${
-                  !openSearch && "opacity-0 invisible' "
+                className={`w-5/6 transition-all duration-500 ease-in-out  bg-sky-900/80 rounded p-4 absolute -bottom-4 left-10 ${
+                  !openSearch && "opacity-0 invisible"
                 } `}
                 type="text"
                 placeholder="Títulos, gêneros, etc..."
@@ -75,15 +75,14 @@ const NavBar = () => {
         />
 
         <ul
-          className={`w-50 transition-all duration-500 ease-in-out bg-sky-900/80 rounded p-4 absolute grid grid-cols-2 text-right top-24 right-40 ${
-            !openMenu && "opacity-0 invisible'"
+          className={`w-auto transition-all duration-500 ease-in-out bg-sky-900/80 rounded p-4 absolute  top-24 right-20 ${
+            !openMenu && "opacity-0 invisible"
           } `}
         >
-          <div>
-            <img src={userLogin} className="w-10" alt="Usuario" />
-          </div>
-
           <div className="leading-10">
+            <li className="flex justify-center">
+              <img src={userLogin} className="w-10" alt="Usuario" />
+            </li>
             <li>
               <a href="#membership">Membership</a>
             </li>

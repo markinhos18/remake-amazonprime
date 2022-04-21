@@ -1,0 +1,46 @@
+.banner{
+
+    .slick-dots{
+        bottom: 13rem !important;
+    }
+
+    .slick-dots li.slick-active button:before {
+        color: white !important;
+    }
+
+    .slick-dots li button:before{
+        font-size: 15px !important;
+    }
+
+    .slick-next:before {
+        content: '❭' !important;
+        background: transparent !important;
+    }
+    
+    .slick-prev:before {
+        content: '❬' !important;
+        background: transparent !important;
+    }
+
+    .slick-next:hover:before {
+        
+        background: black !important;
+    }
+    
+    .slick-prev:hover:before {
+        
+        background: black !important;
+    }
+
+    .slick-dots li button:before {
+       
+        color: yellow;
+       
+    }
+
+    .slick-prev,
+    .slick-next{
+        height: auto !important;
+    }
+
+}
