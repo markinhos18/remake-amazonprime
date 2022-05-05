@@ -1,14 +1,23 @@
 import React from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faPlay, faPlus } from "@fortawesome/free-solid-svg-icons";
-import placeholder1 from "../../assets/banner1.jpg";
-import placeholder2 from "../../assets/banner2.jpg";
-import placeholder3 from "../../assets/banner3.jpg";
+
+import CONST from "../../data/constants";
+
+import { Banner } from "../../data/banner";
+
+import BannerHome from "../BannerH/BannerHome";
+
 import Slider from "react-slick";
 
 import "./Hero.scss";
 
-const Hero = () => {
+interface BannerData {
+  image1: string;
+  image2: string;
+}
+
+const Hero = ({ image1, image2 }: BannerData) => {
   const settings = {
     className: "banner",
     dots: true,
@@ -16,7 +25,7 @@ const Hero = () => {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 7000,
     pauseOnHover: true,
     arrowOnHover: true,
@@ -42,7 +51,7 @@ const Hero = () => {
       {
         breakpoint: 480,
         settings: {
-          dots: true,
+          dots: false,
           slidesToShow: 1,
           slidesToScroll: 1,
           arrows: false,
@@ -51,13 +60,15 @@ const Hero = () => {
     ],
   };
 
+  // console.log(backdrop_path);
+  const { IMAGEURL } = CONST;
   return (
     <header className="box-border relative  -mb-32">
       <Slider {...settings}>
         <div>
           <img
             className="object-fill w-full h-full"
-            src={placeholder2}
+            src={`${IMAGEURL}/original/${image1}`}
             alt="Filme em destaque"
           />
           <div className="absolute left-0 bottom-0 w-full h-80  bg-gradient-to-b from-transparent to-black"></div>
@@ -65,18 +76,10 @@ const Hero = () => {
         <div>
           <img
             className="object-fill w-full h-full"
-            src={placeholder1}
+            src={`${IMAGEURL}/original/${image2}`}
             alt="Filme em destaque"
           />
-          <div className="absolute left-0 bottom-0 w-full   bg-gradient-to-b from-transparent to-black"></div>
-        </div>
-        <div>
-          <img
-            className="object-fill w-full h-full"
-            src={placeholder3}
-            alt="Filme em destaque"
-          />
-          <div className="absolute left-0 bottom-0 w-full   bg-gradient-to-b from-transparent to-black"></div>
+          <div className="absolute left-0 bottom-0 w-full h-80  bg-gradient-to-b from-transparent to-black"></div>
         </div>
       </Slider>
     </header>

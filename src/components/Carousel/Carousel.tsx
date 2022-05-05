@@ -2,15 +2,13 @@ import React from "react";
 
 import Slick from "react-slick";
 
-import mockData, { Movie } from "../../data/mock";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 import "./Carousel.scss";
+import mockData, { Movie } from "../../data/mock";
 
-const Poster = ({ cover, title, score }: Movie, index: number) => (
-  <article key={index}>
-    <img className=" px-2" src={cover} alt={title} />
-  </article>
-);
+import Poster from "../Poster/Poster";
 
 interface CarouselData {
   title?: string;
@@ -25,8 +23,10 @@ const Carousel = ({
     infinite: false,
     // slidesToShow: 8,
     slidesToScroll: 1,
+
     // slidesToEnd: 1,
     variableWidth: true,
+
     // centerMode: true,
     arrows: true,
     responsive: [
@@ -58,8 +58,8 @@ const Carousel = ({
   };
 
   return (
-    <section className="mb-5">
-      <h2 className="relative text-2xl pl-2 pb-5 ">
+    <section className="carousel mb-5">
+      <h2 className="relative text-2xl pl-2  ">
         <span className="blue-title ">prime</span> TV shows we think you'll like
       </h2>
 

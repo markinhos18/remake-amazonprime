@@ -1,7 +1,17 @@
-// .slick-track {
-//    transform: translate3d(0, 0px, 0px) !important;
-//    padding: 0;
-// }
+.carousel {
+    .slick-list {
+       padding: 2rem 0;
+    }
+
+    .slick-slide {
+        padding: 0.3rem; 
+    }
+
+    .slick-slide:hover {
+        position: relative;
+        z-index: 10;
+    }
+}
 
 .slick-next {
     right: 0rem !important;

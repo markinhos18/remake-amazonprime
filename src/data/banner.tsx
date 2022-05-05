@@ -1,59 +1,22 @@
-import cover1 from "../assets/movie4.jpg";
-import cover2 from "../assets/movie1.jpg";
-import cover3 from "../assets/movie2.jpg";
-import cover4 from "../assets/movie3.jpg";
+import placeholder1 from "../assets/banner1.jpg";
+import placeholder2 from "../assets/banner2.jpg";
+import placeholder3 from "../assets/banner3.jpg";
 
-export interface Movie {
-  title: string;
-  cover: string;
-  score?: number | string;
+export interface Banner {
+  placeholder: string;
+  backdrop_path: string;
 }
 
-const mockData: Movie[] = [
-  {
-    title: "The Wheel of Time",
-    cover: cover1,
-  },
-  {
-    title: "Seamen",
-    cover: cover2,
-  },
-  {
-    title: "The Boys",
-    cover: cover3,
-  },
-  {
-    title: "Hanna",
-    cover: cover4,
-  },
-  {
-    title: "The Wheel of Time",
-    cover: cover1,
-  },
-  {
-    title: "Seamen",
-    cover: cover2,
-  },
-  {
-    title: "The Boys",
-    cover: cover3,
-  },
-  {
-    title: "Hanna",
-    cover: cover4,
-  },
-  {
-    title: "The Wheel of Time",
-    cover: cover1,
-  },
-  {
-    title: "Seamen",
-    cover: cover2,
-  },
-  {
-    title: "The Boys",
-    cover: cover3,
-  },
-];
+// const bannerData: Banner[] = [
+//   {
+//     placeholder: placeholder1,
+//   },
+//   {
+//     placeholder: placeholder2,
+//   },
+//   {
+//     placeholder: placeholder3,
+//   },
+// ];
 
-export default mockData;
+// export default bannerData;
