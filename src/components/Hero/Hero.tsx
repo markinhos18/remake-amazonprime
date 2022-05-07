@@ -4,20 +4,23 @@ import React from "react";
 
 import CONST from "../../data/constants";
 
-import { Banner } from "../../data/banner";
+// import { Banner } from "../../data/banner";
 
-import BannerHome from "../BannerH/BannerHome";
+// import BannerHome from "../BannerH/BannerHome";
+
+import image1 from "../../assets/banner1.jpg";
+import image2 from "../../assets/banner2.jpg";
+import image3 from "../../assets/banner3.jpg";
 
 import Slider from "react-slick";
 
 import "./Hero.scss";
 
-interface BannerData {
-  image1: string;
-  image2: string;
-}
+const Hero = ({ backdrop_path, movies }) => {
+  console.log("Hero", movies);
 
-const Hero = ({ image1, image2 }: BannerData) => {
+  const { IMAGEURL } = CONST;
+
   const settings = {
     className: "banner",
     dots: true,
@@ -61,14 +64,16 @@ const Hero = ({ image1, image2 }: BannerData) => {
   };
 
   // console.log(backdrop_path);
-  const { IMAGEURL } = CONST;
+
   return (
     <header className="box-border relative  -mb-32">
       <Slider {...settings}>
         <div>
           <img
             className="object-fill w-full h-full"
-            src={`${IMAGEURL}/original/${image1}`}
+            src={
+              backdrop_path ? `${IMAGEURL}/original/${backdrop_path}` : image1
+            }
             alt="Filme em destaque"
           />
           <div className="absolute left-0 bottom-0 w-full h-80  bg-gradient-to-b from-transparent to-black"></div>
@@ -76,7 +81,19 @@ const Hero = ({ image1, image2 }: BannerData) => {
         <div>
           <img
             className="object-fill w-full h-full"
-            src={`${IMAGEURL}/original/${image2}`}
+            src={
+              backdrop_path ? `${IMAGEURL}/original/${backdrop_path}` : image2
+            }
+            alt="Filme em destaque"
+          />
+          <div className="absolute left-0 bottom-0 w-full h-80  bg-gradient-to-b from-transparent to-black"></div>
+        </div>
+        <div>
+          <img
+            className="object-fill w-full h-full"
+            src={
+              backdrop_path ? `${IMAGEURL}/original/${backdrop_path}` : image3
+            }
             alt="Filme em destaque"
           />
           <div className="absolute left-0 bottom-0 w-full h-80  bg-gradient-to-b from-transparent to-black"></div>

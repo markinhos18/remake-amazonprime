@@ -8,10 +8,34 @@ import Carousel from "./components/Carousel/Carousel";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function App() {
+interface MovieProps {
+  page: number;
+  results: [
+    {
+      adult: boolean;
+      backdrop_path: string;
+      genre_ids: number[];
+      id: number;
+      original_language: string;
+      original_title: string;
+      overview: string;
+      popularity: number;
+      poster_path: string;
+      release_date: string;
+      title: string;
+      video: boolean;
+      vote_average: number;
+      vote_count: number;
+    }
+  ];
+}
+
+const App = () => {
   const { URL, APISTRING } = CONST;
 
-  const [movies, setMovies] = useState<any>();
+  const [movies, setMovies] = useState<MovieProps>({} as MovieProps);
+
+  console.log("Filmes", movies?.results);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,8 +44,8 @@ function App() {
       );
       const data = await response.json();
 
-      console.log(data);
       setMovies(data);
+      console.log("teste", movies);
     };
 
     fetchData();
@@ -31,10 +55,7 @@ function App() {
 
   return (
     <div className="m-auto antialised font-sans bg-black text-white">
-      <Hero
-        image1={...movies?.results[0].backdrop_path}
-        image2={...movies?.results[1].backdrop_path}
-      />
+      <Hero {...movies} />
       <NavBar />
       <Carousel />
       <Carousel />
@@ -43,6 +64,6 @@ function App() {
       <Carousel />
     </div>
   );
-}
+};
 
 export default App;
