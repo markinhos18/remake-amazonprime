@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
+//datas
 import CONST from "./data/constants";
+import { MovieProps } from "./data/movies";
+
+//components
 import Hero from "./components/Hero/Hero";
 import NavBar from "./components/NavBar/NavBar";
 import Carousel from "./components/Carousel/Carousel";
@@ -8,34 +12,10 @@ import Carousel from "./components/Carousel/Carousel";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-interface MovieProps {
-  page: number;
-  results: [
-    {
-      adult: boolean;
-      backdrop_path: string;
-      genre_ids: number[];
-      id: number;
-      original_language: string;
-      original_title: string;
-      overview: string;
-      popularity: number;
-      poster_path: string;
-      release_date: string;
-      title: string;
-      video: boolean;
-      vote_average: number;
-      vote_count: number;
-    }
-  ];
-}
-
 const App = () => {
   const { URL, APISTRING } = CONST;
 
   const [movies, setMovies] = useState<MovieProps>({} as MovieProps);
-
-  console.log("Filmes", movies?.results);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,7 +25,6 @@ const App = () => {
       const data = await response.json();
 
       setMovies(data);
-      console.log("teste", movies);
     };
 
     fetchData();
@@ -55,7 +34,7 @@ const App = () => {
 
   return (
     <div className="m-auto antialised font-sans bg-black text-white">
-      <Hero {...movies} />
+      <Hero results={movies.results} />
       <NavBar />
       <Carousel />
       <Carousel />
