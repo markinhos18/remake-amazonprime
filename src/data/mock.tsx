@@ -4,54 +4,55 @@ import cover3 from "../assets/movie2.jpg";
 import cover4 from "../assets/movie3.jpg";
 
 export interface Movie {
-  title: string;
-  cover: string;
-  score?: number | string;
+  original_title: string;
+  cover?: string;
+  poster_path?: string;
+  vote_average?: number | string;
 }
 
 const mockData: Movie[] = [
   {
-    title: "The Wheel of Time",
+    original_title: "The Wheel of Time",
     cover: cover1,
   },
   {
-    title: "Seamen",
+    original_title: "Seamen",
     cover: cover2,
   },
   {
-    title: "The Boys",
+    original_title: "The Boys",
     cover: cover3,
   },
   {
-    title: "Hanna",
+    original_title: "Hanna",
     cover: cover4,
   },
   {
-    title: "The Wheel of Time",
+    original_title: "The Wheel of Time",
     cover: cover1,
   },
   {
-    title: "Seamen",
+    original_title: "Seamen",
     cover: cover2,
   },
   {
-    title: "The Boys",
+    original_title: "The Boys",
     cover: cover3,
   },
   {
-    title: "Hanna",
+    original_title: "Hanna",
     cover: cover4,
   },
   {
-    title: "The Wheel of Time",
+    original_title: "The Wheel of Time",
     cover: cover1,
   },
   {
-    title: "Seamen",
+    original_title: "Seamen",
     cover: cover2,
   },
   {
-    title: "The Boys",
+    original_title: "The Boys",
     cover: cover3,
   },
 ];
