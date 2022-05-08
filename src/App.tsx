@@ -23,8 +23,8 @@ const App = () => {
         `${URL}/discover/movie${APISTRING}&sort_by=popularity.desc`
       );
       const data = await response.json();
-
       setMovies(data);
+      console.log(data);
     };
 
     fetchData();

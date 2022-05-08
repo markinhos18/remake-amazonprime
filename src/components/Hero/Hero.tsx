@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faPlay, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { MovieProps } from "../../data/movies";
@@ -9,6 +9,7 @@ import CONST from "../../data/constants";
 // import BannerHome from "../BannerH/BannerHome";
 
 import placeholder from "../../assets/banner1.jpg";
+import logo from "../../assets/logo-amazon-white.png";
 // import image2 from "../../assets/banner2.jpg";
 // import image3 from "../../assets/banner3.jpg";
 
@@ -17,10 +18,12 @@ import Slider from "react-slick";
 import "./Hero.scss";
 
 const Hero = ({ results }: MovieProps) => {
-  const [image, setImage] = useState();
+  // const [image, setImage] = useState();
 
   const { IMAGEURL } = CONST;
   const backdrop_path = true;
+  const original_title = true;
+  // const countBanner = 6;
 
   const settings = {
     className: "banner",
@@ -29,6 +32,7 @@ const Hero = ({ results }: MovieProps) => {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
+
     autoplay: true,
     autoplaySpeed: 7000,
     pauseOnHover: true,
@@ -68,16 +72,28 @@ const Hero = ({ results }: MovieProps) => {
     <header className="box-border relative  -mb-32">
       <Slider {...settings}>
         {results?.map((item) => (
-          <img
-            className="object-fill w-full h-full"
-            src={
-              backdrop_path
-                ? `${IMAGEURL}/original/${item.backdrop_path}`
-                : placeholder
-            }
-            alt="Filme em destaque"
-          />
+          <div key={item.id}>
+            <img
+              className="object-fill w-full h-full"
+              src={
+                backdrop_path
+                  ? `${IMAGEURL}/original${item.backdrop_path}`
+                  : placeholder
+              }
+              alt="Filme em destaque"
+            />
+
+            <article className="title-banner absolute top-80 mb-64 container-fluid px-16">
+              <h2 className="text-6xl font-bold">{`${item.original_title}`}</h2>
+              <img
+                src={logo}
+                className="w-55 mt-5 align-center"
+                alt="Amazon Prime"
+              />
+            </article>
+          </div>
         ))}
+
         <div className="absolute left-0 bottom-0 w-full h-80  bg-gradient-to-b from-transparent to-black"></div>
       </Slider>
     </header>
