@@ -1,37 +1,72 @@
 import React from "react";
 
 import CONST from "../../data/constants";
+import logo from "../../assets/title-amazon.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 
-import Score from "../Score/Score";
+// import Score from "../Score/Score";
 import { Movie } from "../../data/mock";
 
 import "./Poster.scss";
 
 const Poster = (
-  { cover, poster_path, original_title, vote_average }: Movie,
+  {
+    cover,
+    backdrop_path,
+    original_title,
+    vote_average,
+    overview,
+    release_date,
+  }: Movie,
   index: number
 ) => {
   const { IMAGEURL } = CONST;
 
   return (
-    <article
-      className="rounded-md relative transition-all duration-500 ease-in-out transform  hover:scale-110 cursor-pointer"
-      key={index}
-    >
-      <img
-        className="w-80 h-48  object-cover object-center"
-        src={poster_path ? `${IMAGEURL}/w200${poster_path}` : cover}
-        alt={original_title}
-      />
-      <div className="poster absolute inset-0 w-full h-full py-8 px-4 grid place-items-center bg-black bg-opacity-40 transition-all duration-500 ease-in-out opacity-0">
-        <FontAwesomeIcon icon={faPlayCircle} size="4x" />
-        <h2 className="text-2xl">{original_title}</h2>
-        <Score value={vote_average} />
-      </div>
-    </article>
+    <div className="poster  ">
+      <article
+        className=" rounded      transition-all duration-500 ease-in-out transform  hover:scale-110  cursor-pointer "
+        key={index}
+      >
+        <span className="absolute -left-0 -top-0  bg-sky-700 text-black rounded-r-lg pe-1 border-solid border-2 border-black px-1 text-1xl font-bold z-50">
+          prime
+        </span>
+
+        <div className="absolute  top-3   w-full">
+          <img
+            src={logo}
+            className="w-40 left-0 right-0 m-auto"
+            alt="Amazon Prime"
+          />
+        </div>
+        <img
+          className="w-80 h-48  object-cover object-center"
+          src={backdrop_path ? `${IMAGEURL}/original${backdrop_path}` : cover}
+          alt={original_title}
+        />
+
+        <div className="absolute top-0 opacity-0 hover:opacity-100    z-50 w-80  ">
+          <div className="box rounded  border-2 border-black hover:border-solid hover:border-2 hover:border-sky-400  transition-all duration-500 ease-in-out transform">
+            <div className="h-44"></div>
+            <div className="card px-5 pb-5">
+              <FontAwesomeIcon icon={faPlayCircle} size="2x" />
+              <b>Reproduzir</b>
+              <h3 className="blue-title py-2">
+                <b>Incluído no Prime</b>
+              </h3>
+              <h2 className="text-1xl pb-1">
+                <b>{original_title}</b>
+              </h2>
+              <p className="descr">{overview}</p>
+              {/* <Score value={vote_average} /> */}
+              <div className="flex">{release_date}</div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
   );
 };
 

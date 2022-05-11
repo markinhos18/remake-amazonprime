@@ -1,6 +1,11 @@
 .carousel {
+
+    // background-color: rgb(17 24 39);
+
     .slick-list {
-       padding: 2rem 0;
+    //    padding:0 0 1rem ;
+       overflow: inherit;
+       overflow-x: clip ;
     }
 
     .slick-slide {
@@ -11,6 +16,10 @@
         position: relative;
         z-index: 10;
     }
+
+    // .slick-list {
+    //     overflow-y: visible !important;
+    // }
 }
 
 .slick-next {
@@ -18,6 +27,7 @@
     z-index: 9999;
     height: 100% !important;
     width: 3rem !important;
+    top:40% !important;
     // background: grey !important;
 }
 
@@ -26,6 +36,7 @@
     z-index: 9999;
     height: 100% !important;
     width: 3rem !important;
+    top: 40% !important;
     // background: grey !important;
 }
 
@@ -53,7 +64,7 @@
     opacity: .4 !important;
     // color: white;
     
-    padding: 60px 16px 77px;
+    padding: 58px 16px 84px;
 }
 
 

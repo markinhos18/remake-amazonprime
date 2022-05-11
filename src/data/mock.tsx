@@ -8,6 +8,9 @@ export interface Movie {
   cover?: string;
   poster_path?: string;
   vote_average?: number | string;
+  backdrop_path?: string;
+  overview?: string;
+  release_date?: string;
 }
 
 const mockData: Movie[] = [

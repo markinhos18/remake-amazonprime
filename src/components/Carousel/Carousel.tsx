@@ -58,9 +58,10 @@ const Carousel = ({
   };
 
   return (
-    <section className="carousel mb-5">
-      <h2 className="relative text-2xl pl-2  ">
-        <span className="blue-title ">prime</span> TV shows we think you'll like
+    <section className="carousel  pl-4">
+      <h2 className=" text-2xl pl-1  pb-2 font-semibold">
+        <span className="blue-title text-3xl">prime</span> TV shows we think
+        you'll like
       </h2>
 
       <Slick {...options}>

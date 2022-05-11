@@ -1,3 +1,20 @@
-.poster:hover {
-   opacity: 1; 
+.poster {
+   height: 230px;
+   // background: red;
+   // position: absolute;
+   // width: 100%;
+}
+
+
+.card{
+   background: rgb(17 24 39);
+   
+}
+
+.descr{
+
+   display: -webkit-box;
+   overflow: hidden;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;
 }

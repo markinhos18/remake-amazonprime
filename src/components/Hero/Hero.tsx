@@ -94,7 +94,7 @@ const Hero = ({ results }: MovieProps) => {
           </div>
         ))}
 
-        <div className="absolute left-0 bottom-0 w-full h-80  bg-gradient-to-b from-transparent to-black"></div>
+        <div className="absolute left-0 bottom-0 w-full h-80  bg-gradient-to-b from-transparent to-gray-900"></div>
       </Slider>
     </header>
   );
