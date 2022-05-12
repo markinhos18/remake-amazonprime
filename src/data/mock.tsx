@@ -4,7 +4,8 @@ import cover3 from "../assets/movie2.jpg";
 import cover4 from "../assets/movie3.jpg";
 
 export interface Movie {
-  original_title: string;
+  original_title?: string;
+  name?: string;
   cover?: string;
   poster_path?: string;
   vote_average?: number | string;

@@ -16,6 +16,7 @@ const Poster = (
     cover,
     backdrop_path,
     original_title,
+    name,
     vote_average,
     overview,
     release_date,
@@ -44,7 +45,7 @@ const Poster = (
         <img
           className="w-80 h-48  object-cover object-center"
           src={backdrop_path ? `${IMAGEURL}/original${backdrop_path}` : cover}
-          alt={original_title}
+          alt={original_title ? original_title : name}
         />
 
         <div className="absolute top-0 opacity-0 hover:opacity-100    z-50 w-80  ">
@@ -57,7 +58,7 @@ const Poster = (
                 <b>Incluído no Prime</b>
               </h3>
               <h2 className="text-1xl pb-1">
-                <b>{original_title}</b>
+                <b>{original_title ? original_title : name}</b>
               </h2>
               <p className="descr">{overview}</p>
               {/* <Score value={vote_average} /> */}

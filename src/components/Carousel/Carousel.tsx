@@ -15,10 +15,7 @@ interface CarouselData {
   data?: Movie[];
 }
 
-const Carousel = ({
-  //   title = "prime TV shows we think you'll like",
-  data = mockData,
-}: CarouselData) => {
+const Carousel = ({ title = "Carousel", data = mockData }: CarouselData) => {
   const options = {
     infinite: false,
     // slidesToShow: 8,
@@ -60,8 +57,7 @@ const Carousel = ({
   return (
     <section className="carousel  pl-4">
       <h2 className=" text-2xl pl-1  pb-2 font-semibold">
-        <span className="blue-title text-3xl">prime</span> TV shows we think
-        you'll like
+        <span className="blue-title text-3xl">prime</span> {title}
       </h2>
 
       <Slick {...options}>
