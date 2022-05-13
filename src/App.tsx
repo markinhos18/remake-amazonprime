@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 //datas
 import CONST from "./data/constants";
 import { MovieProps } from "./data/movies";
-// import { SerieProps } from "./data/series";
+import { SerieProps } from "./data/series";
 
 //components
 import Hero from "./components/Hero/Hero";
@@ -19,7 +19,7 @@ const App = () => {
   const { URL, APISTRING } = CONST;
 
   const [movies, setMovies] = useState<MovieProps>({} as MovieProps);
-  const [series, setSeries] = useState();
+  const [series, setSeries] = useState<SerieProps>({} as SerieProps);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,13 +44,15 @@ const App = () => {
 
   const getFeaturedMovie = () => movies && movies?.results;
 
-  const getMovieList = () => {
-    if (movies) {
-      const [featured, ...movieList] = movies?.results;
-      return movieList;
-    }
-    return [];
-  };
+  const getFeaturedSerie = () => series && series?.results;
+
+  // const getMovieList = () => {
+  //   if (movies) {
+  //     const [featured, ...movieList] = movies?.results;
+  //     return movieList;
+  //   }
+  //   return [];
+  // };
 
   return (
     <div className="m-auto antialised font-sans  text-white">
@@ -59,14 +61,15 @@ const App = () => {
       <div className="relative z-50 ">
         <Carousel
           title="Movie shows we think you'll like"
-          data={getMovieList()}
+          // data={getMovieList()}
+          data={movies?.results}
         />
       </div>
       <div className="relative z-30 section__home1">
-        {/* <Carousel title="Popular TV" data={series?.results} /> */}
+        <Carousel title="Popular Series" data={getFeaturedSerie()} />
       </div>
       <div className="relative z-20 section__home2">
-        <Carousel title="Popular Series" />
+        <Carousel title="Popular TV" />
       </div>
       <div className="relative z-10 section__home3">
         <Carousel title="Popular TV" />
