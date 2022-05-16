@@ -6,6 +6,7 @@ import { MovieProps } from "./data/movies";
 import { SerieProps } from "./data/series";
 
 //components
+import Loading from "./components/Loading/Loading";
 import Hero from "./components/Hero/Hero";
 import NavBar from "./components/NavBar/NavBar";
 import Carousel from "./components/Carousel/Carousel";
@@ -20,6 +21,7 @@ const App = () => {
 
   const [movies, setMovies] = useState<MovieProps>({} as MovieProps);
   const [series, setSeries] = useState<SerieProps>({} as SerieProps);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +37,8 @@ const App = () => {
       );
       const seriesData = await series.json();
       setSeries(seriesData);
+
+      setLoading(false);
     };
 
     fetchData();
@@ -56,28 +60,33 @@ const App = () => {
 
   return (
     <div className="m-auto antialised font-sans  text-white">
-      <Hero results={getFeaturedMovie()} />
-      <NavBar />
-      <div className="relative z-50 ">
-        <Carousel
-          title="Movie shows we think you'll like"
-          // data={getMovieList()}
-          data={movies?.results}
-        />
-      </div>
-      <div className="relative z-30 section__home1">
-        <Carousel title="Popular Series" data={getFeaturedSerie()} />
-      </div>
-      <div className="relative z-20 section__home2">
-        <Carousel title="Popular TV" />
-      </div>
-      <div className="relative z-10 section__home3">
-        <Carousel title="Popular TV" />
-      </div>
-      <div className="relative z-0 section__home4">
-        <Carousel title="Popular TV" />
-      </div>
-      <Footer />
+      {loading && <Loading />}
+      {!loading && (
+        <>
+          <Hero results={getFeaturedMovie()} />
+          <NavBar />
+          <div className="relative z-50 ">
+            <Carousel
+              title="Movie shows we think you'll like"
+              // data={getMovieList()}
+              data={movies?.results}
+            />
+          </div>
+          <div className="relative z-30 section__home1">
+            <Carousel title="Popular Series" data={getFeaturedSerie()} />
+          </div>
+          <div className="relative z-20 section__home2">
+            <Carousel title="Popular TV" />
+          </div>
+          <div className="relative z-10 section__home3">
+            <Carousel title="Popular TV" />
+          </div>
+          <div className="relative z-0 section__home4">
+            <Carousel title="Popular TV" />
+          </div>
+          <Footer />
+        </>
+      )}
     </div>
   );
 };
