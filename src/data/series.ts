@@ -14,7 +14,22 @@ export interface SerieProps {
       number_of_episodes: number;
       number_of_seasons: number;
       status: string;
-      genres: [];
+      genres: [
+        {
+          id: number;
+          name: string;
+          overview: string;
+          poster_path: string;
+          backdrop_path: string;
+          vote_average: number;
+          vote_count: number;
+          first_air_date: string;
+          last_air_date: string;
+          number_of_episodes: number;
+          number_of_seasons: number;
+          status: string;
+        }
+      ];
       networks: [];
       created_by: [];
       seasons: [];
