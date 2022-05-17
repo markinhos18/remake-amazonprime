@@ -12,6 +12,8 @@ export interface Movie {
   backdrop_path?: string;
   overview?: string;
   release_date?: string;
+  movid_id?: number | string;
+  tv_id?: number | string;
 }
 
 const mockData: Movie[] = [

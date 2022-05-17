@@ -20,6 +20,8 @@ const Poster = (
     vote_average,
     overview,
     release_date,
+    movid_id,
+    tv_id,
   }: Movie,
   index: number
 ) => {

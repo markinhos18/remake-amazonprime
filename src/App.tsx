@@ -19,6 +19,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // import "./App.scss";
 
+export enum TitleType {
+  Movie = "movie",
+  Serie = "tv",
+}
+
+export interface TitleProps {
+  type: TitleType;
+  id: number | string;
+}
+
 const App = () => {
   const { URL, APISTRING } = CONST;
 
@@ -27,6 +37,7 @@ const App = () => {
   const [action, setGenreAction] = useState<GenreAction>({} as GenreAction);
   const [horror, setGenreHorror] = useState<GenreHorror>({} as GenreHorror);
   const [comedy, setGenreComedy] = useState<GenreComedy>({} as GenreComedy);
+  const [title, setTitle] = useState<TitleProps>({} as TitleProps);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -96,6 +107,12 @@ const App = () => {
   //   }
   //   return [];
   // };
+
+  const getTitle = async ({ type, id }: TitleProps) => {
+    const title = await fetch(`${URL}/${type}/${id}${APISTRING}`);
+    const titleData = await title.json();
+    setTitle(titleData);
+  };
 
   return (
     <div className="m-auto antialised font-sans  text-white">
