@@ -1,6 +1,8 @@
 import React from "react";
+import emitter from "../../utils/eventEmitter";
 
 import CONST from "../../data/constants";
+import { TitleProps, TitleType } from "../../App";
 import logo from "../../assets/title-amazon.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,18 +22,24 @@ const Poster = (
     vote_average,
     overview,
     release_date,
-    movid_id,
-    tv_id,
+    id,
   }: Movie,
   index: number
 ) => {
   const { IMAGEURL } = CONST;
 
+  const handleClick = () => {
+    const type = original_title ? TitleType.Movie : TitleType.Serie; // TODO: IMPROVE
+
+    emitter.emit(CONST.EVENTS.PosterClick, { type, id });
+  };
+
   return (
     <div className="poster  ">
       <article
-        className=" rounded      transition-all duration-500 ease-in-out transform  hover:scale-110  cursor-pointer "
+        className=" rounded transition-all duration-500 ease-in-out transform  hover:scale-110  cursor-pointer "
         key={index}
+        onClick={handleClick}
       >
         <span className="absolute -left-0 -top-0  bg-sky-700 text-black rounded-r-lg pe-1 border-solid border-2 border-black px-1 text-1xl font-bold z-50">
           prime

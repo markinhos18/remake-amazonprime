@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import emitter from "./utils/eventEmitter";
 
 //datas
 import CONST from "./data/constants";
@@ -40,7 +41,35 @@ const App = () => {
   const [title, setTitle] = useState<TitleProps>({} as TitleProps);
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => movies && console.log(movies), [movies]);
+
+  const getFeaturedMovie = () => movies && movies?.results;
+
+  const getFeaturedSerie = () => series && series?.results;
+
+  const getFeaturedAction = () => action && action?.results;
+
+  const getFeaturedHorror = () => horror && horror?.results;
+
+  const getFeaturedComedy = () => comedy && comedy?.results;
+
+  // const getMovieList = () => {
+  //   if (movies) {
+  //     const [featured, ...movieList] = movies?.results;
+  //     return movieList;
+  //   }
+  //   return [];
+  // };
+
+  const getTitle = async ({ type, id }: TitleProps) => {
+    const title = await fetch(`${URL}/${type}/${id}${APISTRING}`);
+    const titleData = await title.json();
+    setTitle(titleData);
+  };
+
   useEffect(() => {
+    emitter.addListener(CONST.EVENTS.PosterClick, getTitle);
+
     const fetchData = async () => {
       const movies = await fetch(
         `${URL}/discover/movie${APISTRING}&sort_by=popularity.desc`
@@ -88,31 +117,7 @@ const App = () => {
     fetchData();
   }, []);
 
-  // useEffect(() => movies && console.log(movies), [movies]);
-
-  const getFeaturedMovie = () => movies && movies?.results;
-
-  const getFeaturedSerie = () => series && series?.results;
-
-  const getFeaturedAction = () => action && action?.results;
-
-  const getFeaturedHorror = () => horror && horror?.results;
-
-  const getFeaturedComedy = () => comedy && comedy?.results;
-
-  // const getMovieList = () => {
-  //   if (movies) {
-  //     const [featured, ...movieList] = movies?.results;
-  //     return movieList;
-  //   }
-  //   return [];
-  // };
-
-  const getTitle = async ({ type, id }: TitleProps) => {
-    const title = await fetch(`${URL}/${type}/${id}${APISTRING}`);
-    const titleData = await title.json();
-    setTitle(titleData);
-  };
+  useEffect(() => title && console.log(title), [title]);
 
   return (
     <div className="m-auto antialised font-sans  text-white">
