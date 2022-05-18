@@ -18,6 +18,7 @@ const Poster = (
     cover,
     backdrop_path,
     original_title,
+    title,
     name,
     vote_average,
     overview,

@@ -15,6 +15,7 @@ import Hero from "./components/Hero/Hero";
 import NavBar from "./components/NavBar/NavBar";
 import Carousel from "./components/Carousel/Carousel";
 import Footer from "./components/Footer/Footer";
+import Modal from "./components/Modal/Modal";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -38,7 +39,7 @@ const App = () => {
   const [action, setGenreAction] = useState<GenreAction>({} as GenreAction);
   const [horror, setGenreHorror] = useState<GenreHorror>({} as GenreHorror);
   const [comedy, setGenreComedy] = useState<GenreComedy>({} as GenreComedy);
-  const [title, setTitle] = useState<TitleProps>({} as TitleProps);
+  const [title, setTitle] = useState();
   const [loading, setLoading] = useState(true);
 
   // useEffect(() => movies && console.log(movies), [movies]);
@@ -90,7 +91,6 @@ const App = () => {
       );
       const actionData = await action.json();
       setGenreAction(actionData);
-      // console.log(actionData);
 
       /****************************************** */
       const horror = await fetch(
@@ -98,7 +98,6 @@ const App = () => {
       );
       const horrorData = await horror.json();
       setGenreHorror(horrorData);
-      // console.log(horrorData);
 
       /***************************************************** */
 
@@ -107,7 +106,6 @@ const App = () => {
       );
       const comedyData = await comedy.json();
       setGenreComedy(comedyData);
-      // console.log(horrorData);
 
       /***************************************************** */
 
@@ -126,7 +124,7 @@ const App = () => {
         <>
           <Hero results={getFeaturedMovie()} />
           <NavBar />
-          <div className="relative z-50 ">
+          <div className="relative z-40 ">
             <Carousel
               title="Movie shows we think you'll like"
               // data={getMovieList()}
@@ -155,6 +153,8 @@ const App = () => {
             />
           </div>
           <Footer />
+
+          {title && Modal(title)}
         </>
       )}
     </div>
