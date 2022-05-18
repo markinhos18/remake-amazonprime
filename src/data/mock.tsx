@@ -5,6 +5,7 @@ import cover4 from "../assets/movie3.jpg";
 
 export interface Movie {
   original_title?: string;
+  title?: string;
   name?: string;
   cover?: string;
   poster_path?: string;
@@ -12,6 +13,7 @@ export interface Movie {
   backdrop_path?: string;
   overview?: string;
   release_date?: string;
+  id?: number | string;
 }
 
 const mockData: Movie[] = [

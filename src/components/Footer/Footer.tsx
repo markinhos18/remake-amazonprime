@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer
       id="pv-footer"
-      className="flex flex-col items-center justify-center w-full text-center pt-0 pb-8"
+      className="flex flex-col items-center justify-center w-full text-center py-16"
     >
       <img src={logofooter} alt="logo" className="logo w-32" />
       <ul className="w-full ">
@@ -20,7 +20,7 @@ const Footer = () => {
             target="_blank"
             className="link-footer text-sm md:text-base "
           >
-            Termos e aviso de privacidade
+            Terms and Privacy Notice
           </a>
         </li>
         <li>
@@ -29,7 +29,7 @@ const Footer = () => {
             target="_blank"
             className="link-footer text-sm md:text-base "
           >
-            Enviar feedback
+            Submit Feedback
           </a>
         </li>
         <li>
@@ -38,11 +38,11 @@ const Footer = () => {
             target="_blank"
             className="link-footer text-sm md:text-base"
           >
-            Ajuda
+            Help
           </a>
         </li>
         <li>
-          © 1996- {today.getFullYear()}, Amazon.com, Inc. ou suas afiliadas
+          © 1996- {today.getFullYear()}, Amazon.com, Inc. or its affiliates
         </li>
       </ul>
     </footer>

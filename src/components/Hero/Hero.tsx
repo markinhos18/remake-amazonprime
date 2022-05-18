@@ -10,8 +10,6 @@ import CONST from "../../data/constants";
 
 import placeholder from "../../assets/banner1.jpg";
 import logo from "../../assets/logo-amazon-white.png";
-// import image2 from "../../assets/banner2.jpg";
-// import image3 from "../../assets/banner3.jpg";
 
 import Slider from "react-slick";
 

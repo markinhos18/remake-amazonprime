@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import emitter from "./utils/eventEmitter";
 
 //datas
 import CONST from "./data/constants";
@@ -14,10 +15,21 @@ import Hero from "./components/Hero/Hero";
 import NavBar from "./components/NavBar/NavBar";
 import Carousel from "./components/Carousel/Carousel";
 import Footer from "./components/Footer/Footer";
+import Modal from "./components/Modal/Modal";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // import "./App.scss";
+
+export enum TitleType {
+  Movie = "movie",
+  Serie = "tv",
+}
+
+export interface TitleProps {
+  type: TitleType;
+  id: number | string;
+}
 
 const App = () => {
   const { URL, APISTRING } = CONST;
@@ -27,55 +39,8 @@ const App = () => {
   const [action, setGenreAction] = useState<GenreAction>({} as GenreAction);
   const [horror, setGenreHorror] = useState<GenreHorror>({} as GenreHorror);
   const [comedy, setGenreComedy] = useState<GenreComedy>({} as GenreComedy);
+  const [title, setTitle] = useState();
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const movies = await fetch(
-        `${URL}/discover/movie${APISTRING}&sort_by=popularity.desc`
-      );
-      const moviesData = await movies.json();
-      setMovies(moviesData);
-      // console.log(moviesData);
-      /******************************************************* */
-      const series = await fetch(
-        `${URL}/discover/tv${APISTRING}&sort_by=popularity.desc`
-      );
-      const seriesData = await series.json();
-      setSeries(seriesData);
-
-      /********************************************************* */
-      const action = await fetch(
-        `${URL}/discover/tv${APISTRING}&sort_by=popularity.desc&with_genres=10759`
-      );
-      const actionData = await action.json();
-      setGenreAction(actionData);
-      // console.log(actionData);
-
-      /****************************************** */
-      const horror = await fetch(
-        `${URL}/discover/movie${APISTRING}&sort_by=popularity.desc&with_genres=27`
-      );
-      const horrorData = await horror.json();
-      setGenreHorror(horrorData);
-      // console.log(horrorData);
-
-      /***************************************************** */
-
-      const comedy = await fetch(
-        `${URL}/discover/tv${APISTRING}&sort_by=popularity.desc&with_genres=35,18`
-      );
-      const comedyData = await comedy.json();
-      setGenreComedy(comedyData);
-      // console.log(horrorData);
-
-      /***************************************************** */
-
-      setLoading(false);
-    };
-
-    fetchData();
-  }, []);
 
   // useEffect(() => movies && console.log(movies), [movies]);
 
@@ -97,6 +62,64 @@ const App = () => {
   //   return [];
   // };
 
+  const getTitle = async ({ type, id }: TitleProps) => {
+    setLoading(true);
+    const title = await fetch(`${URL}/${type}/${id}${APISTRING}`);
+    const titleData = await title.json();
+    setTitle(titleData);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    emitter.addListener(CONST.EVENTS.PosterClick, getTitle);
+    emitter.addListener(CONST.EVENTS.ModalClose, () => setTitle(undefined));
+
+    const fetchData = async () => {
+      const movies = await fetch(
+        `${URL}/discover/movie${APISTRING}&sort_by=popularity.desc`
+      );
+      const moviesData = await movies.json();
+      setMovies(moviesData);
+      // console.log(moviesData);
+      /******************************************************* */
+      const series = await fetch(
+        `${URL}/discover/tv${APISTRING}&sort_by=popularity.desc`
+      );
+      const seriesData = await series.json();
+      setSeries(seriesData);
+
+      /********************************************************* */
+      const action = await fetch(
+        `${URL}/discover/tv${APISTRING}&sort_by=popularity.desc&with_genres=10759`
+      );
+      const actionData = await action.json();
+      setGenreAction(actionData);
+
+      /****************************************** */
+      const horror = await fetch(
+        `${URL}/discover/movie${APISTRING}&sort_by=popularity.desc&with_genres=27`
+      );
+      const horrorData = await horror.json();
+      setGenreHorror(horrorData);
+
+      /***************************************************** */
+
+      const comedy = await fetch(
+        `${URL}/discover/tv${APISTRING}&sort_by=popularity.desc&with_genres=35,18`
+      );
+      const comedyData = await comedy.json();
+      setGenreComedy(comedyData);
+
+      /***************************************************** */
+
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  // useEffect(() => title && console.log(title), [title]);
+
   return (
     <div className="m-auto antialised font-sans  text-white">
       {loading && <Loading />}
@@ -104,7 +127,7 @@ const App = () => {
         <>
           <Hero results={getFeaturedMovie()} />
           <NavBar />
-          <div className="relative z-50 ">
+          <div className="relative z-40 ">
             <Carousel
               title="Movie shows we think you'll like"
               // data={getMovieList()}
@@ -133,6 +156,8 @@ const App = () => {
             />
           </div>
           <Footer />
+
+          {!loading && title && <Modal {...title} />}
         </>
       )}
     </div>
