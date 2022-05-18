@@ -63,13 +63,16 @@ const App = () => {
   // };
 
   const getTitle = async ({ type, id }: TitleProps) => {
+    setLoading(true);
     const title = await fetch(`${URL}/${type}/${id}${APISTRING}`);
     const titleData = await title.json();
     setTitle(titleData);
+    setLoading(false);
   };
 
   useEffect(() => {
     emitter.addListener(CONST.EVENTS.PosterClick, getTitle);
+    emitter.addListener(CONST.EVENTS.ModalClose, () => setTitle(undefined));
 
     const fetchData = async () => {
       const movies = await fetch(
@@ -115,7 +118,7 @@ const App = () => {
     fetchData();
   }, []);
 
-  useEffect(() => title && console.log(title), [title]);
+  // useEffect(() => title && console.log(title), [title]);
 
   return (
     <div className="m-auto antialised font-sans  text-white">
@@ -154,7 +157,7 @@ const App = () => {
           </div>
           <Footer />
 
-          {title && Modal(title)}
+          {!loading && title && <Modal {...title} />}
         </>
       )}
     </div>
