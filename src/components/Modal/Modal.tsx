@@ -6,7 +6,7 @@ import CONST from "../../data/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faPlay } from "@fortawesome/free-solid-svg-icons";
 
-import Score from "../Score/Score";
+// import Score from "../Score/Score";
 
 import "./Modal.scss";
 
@@ -17,10 +17,13 @@ const Modal = ({
   original_title,
   original_name,
   title,
+  genre_ids,
   genres,
   created_by,
+  original_language,
   name,
   vote_average,
+  certification_country,
   runtime,
   number_of_seasons,
   overview,
@@ -38,38 +41,28 @@ const Modal = ({
   };
 
   return (
-    <div className="fixed z-50 top-0 left-0  p-3  lg:p-12  w-full h-screen grid place-items-center">
+    <div className="fixed z-50 top-0 left-0   bg-black bg-opacity-75   w-full h-screen grid place-items-center">
       <article className="modal w-full h-full grid  bg-gray-900 shadow-2xl ">
-        <FontAwesomeIcon
-          className="cursor-pointer absolute top-0 right-0 hover:text-blue-900 "
-          icon={faTimesCircle}
-          size="2x"
-          onClick={handleClick}
-        />
         <div className="flex justify-end ">
+          <FontAwesomeIcon
+            className="cursor-pointer z-50 absolute "
+            icon={faTimesCircle}
+            size="2x"
+            onClick={handleClick}
+          />
           <img
-            className="object-cover object-center w-4/5 h-full   "
+            className="object-cover object-center w-full h-full  lg:w-4/5 "
             src={backdrop_path ? `${IMAGEURL}/original${backdrop_path}` : cover}
             alt={original_title ? original_title : original_name}
           />
         </div>
 
         <div className="modalbg  h-full p-5  lg:p-12 md:relative  lg:absolute text-left  ">
-          <h1 className="text-4xl pb-1 font-bold">
+          <h1 className="text-5xl pb-5 font-bold">
             {original_title ? original_title : original_name}
           </h1>
-
-          <div
-            className="_1DrAlF"
-            data-testid="chart-position-badge"
-            data-automation-id="chart-position-badge"
-          >
-            <span className="_2tqSOt">TOP 10</span>
-            <span className="_1mbktc">Número 1 no Brasil</span>
-          </div>
-
-          <div className="_3QwtCH _16AW_S _2LF_6p dv-node-dp-badges _3vxMzE HaWow5">
-            <span className="FDDgZI">
+          <div className="w-full">
+            <span className="float-left mr-1 py-1">
               <svg
                 className="_22qEau"
                 viewBox="0 0 33 16"
@@ -95,96 +88,198 @@ const Modal = ({
                   ></path>
                 </svg>
               </svg>
-
-              <span
-                role="text"
-                data-automation-id="imdb-rating-badge"
-                aria-label="Classificação no IMDb: 5.2"
-              >
-                <Score value={vote_average} />
-              </span>
             </span>
 
-            <span className="XqYSS8">
-              <span
-                role="text"
-                aria-label="Duração de 2h 10min"
-                data-automation-id="runtime-badge"
-              >
+            <span className="mr-3">{vote_average}</span>
+
+            <span className="mr-3">
+              <span>
                 {runtime ? `${runtime}min` : `${number_of_seasons} temporadas`}
               </span>
             </span>
 
-            <span className="XqYSS8">
-              <span
-                role="text"
-                aria-label="Lançado em 2022"
-                data-automation-id="release-year-badge"
-              >
-                2022
-              </span>
+            <span className="mr-3 ">
+              <span>{release_date}</span>
             </span>
+          </div>
 
-            <span className="i4xv9t">
+          <div className="w-full">
+            <span className="iconmini mr-2">
               <span data-automation-id="x-ray-badge">X-Ray</span>
             </span>
 
-            <span className="i4xv9t">
+            <span className="iconmini mr-2">
               <span data-automation-id="hdr-badge">HDR</span>
             </span>
 
-            <span className="i4xv9t">
+            <span className="iconmini mr-2">
               <span data-automation-id="uhd-badge">UHD</span>
             </span>
 
-            <span
-              role="text"
-              aria-label="Não recomendado para menores de 14 anos"
-              className="T2CIjV"
-            >
-              <img
-                className="_1bVHQ0"
-                src="https://m.media-amazon.com/images/G/01/vcc/maturity-ratings-logos/png/djctq/14.png"
-                alt="Não recomendado para menores de 14 anos"
-                title="Não recomendado para menores de 14 anos"
-              />
+            <span className="iconmini mr-2">
+              <span data-automation-id="uhd-badge">
+                Legendas {original_language}
+              </span>
             </span>
 
-            <span
-              data-automation-id="subtitles-badge"
-              aria-label="Legendas"
-              role="text"
-            >
-              <span className="Gpyvwj _3lV8u4 _3y6hZ6"></span>
+            <span className="iconmini">
+              <span data-automation-id="uhd-badge">
+                Idiomas de áudio {original_language}
+              </span>
             </span>
           </div>
 
-          <div className="textmodal  " data-automation-id="atf-synopsis">
+          <div className="textmodal  py-5" data-automation-id="atf-synopsis">
             <p className="descr">{overview}</p>
           </div>
+          <div className="flex items-center mt-8 rounded-md py-3 bg-sky-700 justify-center w-40 cursor-pointer">
+            <FontAwesomeIcon icon={faPlay} className="pr-2" size="2x" />
+            <b>Reproduzir</b>
+          </div>
 
-          <table>
-            <tr>
-              <th>Diretores</th>
-              <td>Maria Anders</td>
-            </tr>
-            <tr>
-              <th>Atores principais</th>
-              <td>Francisco Chang</td>
-            </tr>
-            <tr>
-              <th>Gêneros</th>
-              <td>Roland Mendel</td>
-            </tr>
-            <tr>
-              <th>Legendas</th>
-              <td>Helen Bennett</td>
-            </tr>
-            <tr>
-              <th>Idiomas de áudio</th>
-              <td>Yoshi Tannamuri</td>
-            </tr>
-          </table>
+          <div className="dv-dp-node-bottom _2T-E4t mt-8">
+            <div className="pb-9">
+              <span className="_36qUej">
+                Ao clicar em Reproduzir, você concorda com nossos
+                <a
+                  href="https://www.primevideo.com/help/ref=atv_dp_terms?language=pt_br&nodeId=202095490"
+                  className="link-footer text-sm md:text-base pl-1"
+                  target="_blank"
+                >
+                  Termos de uso.
+                </a>
+              </span>
+            </div>
+            <div className="flex ">
+              <div className="flex items-center pr-5">
+                <div className="pr-3">
+                  <svg
+                    className="_22qEau"
+                    viewBox="0 0 24 24"
+                    height="24"
+                    width="24"
+                    role="img"
+                    aria-hidden="true"
+                  >
+                    <title>Share</title>
+                    <svg
+                      width="24"
+                      height="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title>Share</title>
+                      <path
+                        d="M6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm12-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-3-4l-7-3m7-7l-7 3"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        fill="none"
+                      ></path>
+                    </svg>
+                  </svg>
+                </div>
+                <span className="">
+                  <button
+                    id="shareTrigger"
+                    className="_1soPIu"
+                    data-automation-id="share-button"
+                    data-testid="share-button"
+                  >
+                    <span className="_36qUej">Compartilhar</span>
+                  </button>
+                </span>
+              </div>
+              <div className="flex items-center pr-5">
+                <div className="pr-3">
+                  <svg
+                    className="_22qEau"
+                    viewBox="0 0 24 24"
+                    height="24"
+                    width="24"
+                    role="img"
+                    aria-hidden="true"
+                  >
+                    <title>Edit</title>
+                    <svg
+                      width="24"
+                      height="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title>Edit</title>
+                      <g
+                        fill="none"
+                        fill-rule="evenodd"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M17.87 3L3 17v4h4L22 7.09z"
+                        ></path>
+                        <path d="M15 7l3 3"></path>
+                      </g>
+                    </svg>
+                  </svg>
+                </div>
+                <span className="">
+                  <button
+                    data-automation-id="feedback-button"
+                    data-testid="feedback-button"
+                    className="_1DL1hb"
+                  >
+                    <span className="_36qUej">Feedback</span>
+                  </button>
+                </span>
+              </div>
+              <div className="flex items-center pr-5">
+                <div className="pr-3">
+                  <svg
+                    className="_22qEau"
+                    viewBox="0 0 24 24"
+                    height="24"
+                    width="24"
+                    role="img"
+                    aria-hidden="true"
+                  >
+                    <title>Help</title>
+                    <svg
+                      width="24"
+                      height="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title>Help</title>
+                      <g fill="none" fill-rule="evenodd">
+                        <path
+                          d="M11 18v-2h2v2h-2zm1-12c3.401 0 4 1.757 4 2.925 0 1.47-.627 1.88-1.4 2.38-.774.485-1.438 1.061-1.6 1.954l-.072.741H11v-.846c.108-1.32.681-1.716 1.4-2.186.703-.469 1.6-1.013 1.6-1.83 0-.925-1.046-1.454-2-1.454-1.296 0-1.982 1.03-2 2.105H8C8.054 7.623 9.372 6 12 6z"
+                          fill="currentColor"
+                        ></path>
+                        <circle
+                          stroke="currentColor"
+                          stroke-width="2"
+                          cx="12"
+                          cy="12"
+                          r="9"
+                        ></circle>
+                      </g>
+                    </svg>
+                  </svg>
+                </div>
+                <span
+                  data-automation-id="get-help-link"
+                  data-testid="get-help-link"
+                >
+                  <span className="_36qUej">
+                    <a
+                      href="https://www.primevideo.com/help/ref=atv_dp_fb_need_help?language=pt_br"
+                      target="_blank"
+                    >
+                      Ajuda
+                    </a>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </article>
     </div>

@@ -20,6 +20,7 @@ const Poster = (
     original_title,
     title,
     name,
+    video,
     vote_average,
     overview,
     release_date,
@@ -63,8 +64,14 @@ const Poster = (
           <div className="box rounded  border-2 border-black hover:border-solid hover:border-2 hover:border-sky-400  transition-all duration-500 ease-in-out transform">
             <div className="h-44"></div>
             <div className="card px-5 pb-5">
-              <FontAwesomeIcon icon={faPlayCircle} size="2x" />
-              <b>Reproduzir</b>
+              <div className="flex items-center pt-2">
+                <FontAwesomeIcon
+                  icon={faPlayCircle}
+                  className="pr-2"
+                  size="2x"
+                />
+                <b>Reproduzir</b>
+              </div>
               <h3 className="blue-title py-2">
                 <b>Incluído no Prime</b>
               </h3>

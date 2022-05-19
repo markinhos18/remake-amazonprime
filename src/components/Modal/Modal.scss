@@ -4,31 +4,47 @@
         
         background: rgb(17, 24, 39);
         background: linear-gradient(90deg, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 1) 44%, rgba(255, 255, 255, 0) 100%);
-        width: 70%;
+        width: 100%;
+
+        @media screen and (min-width: 992px) {
+            width: 70%;
+        }
     }
 
     .imgmodal{
         width: 60%;
 
-        @media only screen and (max-width: 600px) {
-            .imgmodal {
-                width: 100%;
-            }
         
-        }
     }
 
     .textmodal{
         // height: 90%;
-        width: 50%;
+        width: 100%;
 
-        @media only screen and (max-width: 600px) {
-               
-            .textmodal {
-                // height: 90%;
-                width: 100%;
-            }
-         }
+        @media screen and (min-width: 992px) {
+            width: 50%;
+        }
+
+        
+    }
+
+    .iconmini {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: rgba(15, 23, 30, .3);
+        border: 1px solid #8197a4;
+        border-radius: 3px;
+        box-sizing: border-box;
+        color: #8197a4;
+        font-family: Amazon Ember, Amazon Arabic Ember, Arial, sans-serif !important;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 13px;
+        padding: 1px 3px 2px;
+    }
+
+    .link-footer {
+        color: #79b8f3;
     }
 
         

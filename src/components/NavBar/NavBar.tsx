@@ -36,7 +36,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className=" top-0 md:relative  lg:absolute px-5 mx-auto   w-full flex flex-wrap items-center justify-between px-2 py-5  mb-3">
+    <nav className="top-0 fixed  lg:absolute bg-gray-900 lg:bg-transparent  mx-auto z-50  w-full flex flex-wrap items-center justify-between px-5 lg:px-16 py-2 lg:py-5  mb-3">
       <div className="container w-full mr-5 relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
         <a href="#prime">
           <h1 className="hidden">Amazon Prime</h1>
@@ -52,16 +52,16 @@ const NavBar = () => {
       </div>
       <div
         className={
-          "relative top-5 lg:top-0 lg:flex flex-grow items-center" +
+          "relative top-5 pb-8 lg:pb-0 lg:top-0 lg:flex flex-grow items-center" +
           (navbarOpen ? " flex" : " hidden")
         }
         id="example-navbar-danger"
       >
         <ul className="flex flex-col  lg:flex-row list-none  w-full  lg:w-auto transition-all duration-500 ease-in-out bg-sky-900/50 rounded-lg text-2xl gap-8 px-5 py-2">
-          <li className="nav-item">
-            <form className="absolute -top-44 lg:top-auto lg:relative">
+          <li className="nav-item pr-3">
+            <form className="relative lg:absolute  ">
               <FontAwesomeIcon
-                className="gap-5 cursor-pointer"
+                className="gap-5  cursor-pointer"
                 icon={faSearch}
                 onClick={handleClickSearch}
               />

@@ -7,6 +7,8 @@ export interface Movie {
   original_title?: string;
   title?: string;
   name?: string;
+  video?: boolean;
+  genre_ids?: number[];
   cover?: string;
   poster_path?: string;
   vote_average?: number | string;

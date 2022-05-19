@@ -9,4 +9,6 @@ const EVENTS = {
   ModalClose: "ModalClose",
 };
 
-export default { URL, IMAGEURL, APIKEY, APISTRING, EVENTS };
+const VIDEOURL = "https://www.youtube.com/watch?v=";
+
+export default { URL, IMAGEURL, APIKEY, APISTRING, EVENTS, VIDEOURL };

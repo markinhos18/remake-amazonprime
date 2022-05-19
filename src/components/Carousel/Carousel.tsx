@@ -55,9 +55,9 @@ const Carousel = ({ title = "Carousel", data = mockData }: CarouselData) => {
   };
 
   return (
-    <section className="carousel  pl-4">
-      <h2 className=" text-2xl pl-1  pb-2 font-semibold">
-        <span className="blue-title text-3xl">prime</span> {title}
+    <section className="carousel ">
+      <h2 className="text-1xl lg:text-2xl pl-9 pb-2 font-semibold">
+        <span className="blue-title text-2xl lg:text-3xl">prime</span> {title}
       </h2>
 
       <Slick {...options}>

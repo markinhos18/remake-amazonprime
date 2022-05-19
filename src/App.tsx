@@ -116,6 +116,8 @@ const App = () => {
     };
 
     fetchData();
+
+    // return emitter.removeAllListeners();
   }, []);
 
   // useEffect(() => title && console.log(title), [title]);
@@ -125,8 +127,8 @@ const App = () => {
       {loading && <Loading />}
       {!loading && (
         <>
-          <Hero results={getFeaturedMovie()} />
           <NavBar />
+          <Hero results={getFeaturedMovie()} />
           <div className="relative z-40 ">
             <Carousel
               title="Movie shows we think you'll like"

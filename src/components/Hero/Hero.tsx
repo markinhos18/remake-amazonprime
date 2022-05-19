@@ -67,7 +67,7 @@ const Hero = ({ results }: MovieProps) => {
   };
 
   return (
-    <header className="box-border relative  -mb-32">
+    <header className="box-border relative  top-10 lg:top-0 h-96 lg:h-full -mb-32">
       <Slider {...settings}>
         {results?.map((item) => (
           <div key={item.id}>
@@ -81,18 +81,18 @@ const Hero = ({ results }: MovieProps) => {
               alt="Filme em destaque"
             />
 
-            <article className="title-banner absolute top-80 mb-64 container-fluid px-16">
-              <h2 className="text-6xl font-bold">{`${item.original_title}`}</h2>
+            <article className="title-banner absolute top-20 lg:top-80 mb-64 container-fluid px-16">
+              <h2 className="text-2xl lg:text-6xl font-bold">{`${item.original_title}`}</h2>
               <img
                 src={logo}
-                className="w-55 mt-5 align-center"
+                className="w-55 opacity-0 lg:opacity-100 mt-5 align-center"
                 alt="Amazon Prime"
               />
             </article>
           </div>
         ))}
 
-        <div className="absolute left-0 bottom-0 w-full h-80  bg-gradient-to-b from-transparent to-gray-900"></div>
+        <div className="absolute top-10 lg:top-auto left-0 bottom-0 w-full h-80  bg-gradient-to-b from-transparent to-gray-900"></div>
       </Slider>
     </header>
   );
