@@ -81,7 +81,7 @@ const Hero = ({ results }: MovieProps) => {
               alt="Filme em destaque"
             />
 
-            <article className="title-banner absolute top-20 lg:top-80 mb-64 container-fluid px-16">
+            <article className="title-banner absolute top-20 lg:top-80 mb-64 container-fluid pl-9">
               <h2 className="text-2xl lg:text-6xl font-bold">{`${item.original_title}`}</h2>
               <img
                 src={logo}
