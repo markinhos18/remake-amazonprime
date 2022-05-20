@@ -7,8 +7,8 @@ const APISTRING = `?api_key=${APIKEY}&language=pt-BR`;
 const EVENTS = {
   PosterClick: "PosterClick",
   ModalClose: "ModalClose",
+  VideoClose: "VideoClose",
+  VideoClick: "VideoClick",
 };
 
-const VIDEOURL = "https://www.youtube.com/watch?v=";
-
-export default { URL, IMAGEURL, APIKEY, APISTRING, EVENTS, VIDEOURL };
+export default { URL, IMAGEURL, APIKEY, APISTRING, EVENTS };

@@ -16,6 +16,8 @@ export interface Movie {
   overview?: string;
   release_date?: string;
   id?: number | string;
+  key?: string;
+  type?: string;
 }
 
 const mockData: Movie[] = [

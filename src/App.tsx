@@ -8,6 +8,7 @@ import { SerieProps } from "./data/series";
 import { GenreAction } from "./data/genreaction";
 import { GenreHorror } from "./data/genrehorror";
 import { GenreComedy } from "./data/genrecomedy";
+// import { VideoProps } from "./data/video";
 
 //components
 import Loading from "./components/Loading/Loading";
@@ -16,6 +17,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Carousel from "./components/Carousel/Carousel";
 import Footer from "./components/Footer/Footer";
 import Modal from "./components/Modal/Modal";
+import ModalVideo from "./components/ModalVideo/ModalVideo";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -29,6 +31,8 @@ export enum TitleType {
 export interface TitleProps {
   type: TitleType;
   id: number | string;
+  video: boolean;
+  key: number | string;
 }
 
 const App = () => {
@@ -39,6 +43,7 @@ const App = () => {
   const [action, setGenreAction] = useState<GenreAction>({} as GenreAction);
   const [horror, setGenreHorror] = useState<GenreHorror>({} as GenreHorror);
   const [comedy, setGenreComedy] = useState<GenreComedy>({} as GenreComedy);
+  const [video, setVideo] = useState();
   const [title, setTitle] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -70,8 +75,18 @@ const App = () => {
     setLoading(false);
   };
 
+  const getVideo = async ({ type, id, key }: TitleProps) => {
+    setLoading(true);
+    const video = await fetch(`${URL}/${type}/${id}/videos${APISTRING}`);
+    const videoData = await video.json();
+    setVideo(videoData);
+    setLoading(false);
+  };
+
   useEffect(() => {
     emitter.addListener(CONST.EVENTS.PosterClick, getTitle);
+    emitter.addListener(CONST.EVENTS.VideoClick, getVideo);
+    emitter.addListener(CONST.EVENTS.VideoClose, () => setVideo(undefined));
     emitter.addListener(CONST.EVENTS.ModalClose, () => setTitle(undefined));
 
     const fetchData = async () => {
@@ -160,6 +175,8 @@ const App = () => {
           <Footer />
 
           {!loading && title && <Modal {...title} />}
+          {!loading && video && <ModalVideo {...video} />}
+          {/* <ModalVideo /> */}
         </>
       )}
     </div>

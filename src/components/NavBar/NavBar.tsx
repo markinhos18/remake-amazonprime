@@ -108,7 +108,7 @@ const NavBar = () => {
 
         <div className=" ">
           <FontAwesomeIcon
-            className="absolute    -top-14  lg:top-0 right-14 lg:right-0 text-2xl cursor-pointer"
+            className="absolute -top-14  lg:top-0 right-14 lg:right-0 text-2xl cursor-pointer"
             icon={faGear}
             onClick={handleClickMenu}
           />

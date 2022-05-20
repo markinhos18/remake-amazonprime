@@ -2,9 +2,13 @@ import React from "react";
 import emitter from "../../utils/eventEmitter";
 
 import CONST from "../../data/constants";
+import { TitleType } from "../../App";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faPlay } from "@fortawesome/free-solid-svg-icons";
+
+// import { Movie } from "../../data/mock";
+// import { Video } from "../../data/video";
 
 // import Score from "../Score/Score";
 
@@ -33,8 +37,14 @@ const Modal = ({
   episode_run_time,
   release_date,
   id,
+  key,
 }: any) => {
   const { IMAGEURL } = CONST;
+
+  const handleClickVideo = () => {
+    const type = original_title ? TitleType.Movie : TitleType.Serie; // TODO: IMPROVE
+    emitter.emit(CONST.EVENTS.VideoClick, { type, id });
+  };
 
   const handleClick = () => {
     emitter.emit(CONST.EVENTS.ModalClose);
@@ -132,7 +142,11 @@ const Modal = ({
           <div className="textmodal  py-5" data-automation-id="atf-synopsis">
             <p className="descr">{overview}</p>
           </div>
-          <div className="flex items-center mt-8 rounded-md py-3 bg-sky-700 justify-center w-40 cursor-pointer">
+
+          <div
+            className="flex items-center mt-8 rounded-md py-3 bg-sky-700 justify-center w-40 cursor-pointer"
+            onClick={handleClickVideo}
+          >
             <FontAwesomeIcon icon={faPlay} className="pr-2" size="2x" />
             <b>Reproduzir</b>
           </div>

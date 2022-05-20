@@ -2,7 +2,7 @@ import React from "react";
 import emitter from "../../utils/eventEmitter";
 
 import CONST from "../../data/constants";
-import { TitleProps, TitleType } from "../../App";
+import { TitleType } from "../../App";
 import logo from "../../assets/title-amazon.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,6 +25,8 @@ const Poster = (
     overview,
     release_date,
     id,
+    key,
+    type,
   }: Movie,
   index: number
 ) => {
