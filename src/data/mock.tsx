@@ -17,7 +17,22 @@ export interface Movie {
   release_date?: string;
   id?: number | string;
   key?: string;
+  include_video?: boolean;
   type?: string;
+  original_language?: string;
+  episode_run_time?: number[];
+  vote_count?: number;
+  adult?: boolean;
+  languages?: string[];
+  original_name?: string;
+  origin_country?: string[];
+  first_air_date?: string;
+  spoken_languages?: { iso_639_1: string; name: string }[];
+  number_of_episodes?: number;
+  popularity?: number;
+  profile_path?: string;
+  known_for?: Movie[];
+  known_for_department?: string;
 }
 
 const mockData: Movie[] = [

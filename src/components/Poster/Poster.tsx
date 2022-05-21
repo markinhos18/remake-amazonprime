@@ -72,17 +72,17 @@ const Poster = (
                   className="pr-2"
                   size="2x"
                 />
-                <b>Reproduzir</b>
+                <b>Play now</b>
               </div>
               <h3 className="blue-title py-2">
-                <b>Incluído no Prime</b>
+                <b>Included in Prime</b>
               </h3>
               <h2 className="text-1xl pb-1">
                 <b>{original_title ? original_title : name}</b>
               </h2>
               <p className="descr">{overview}</p>
               {/* <Score value={vote_average} /> */}
-              <div className="flex">{release_date}</div>
+              <span className="flex pt-1">{release_date}</span>
             </div>
           </div>
         </div>

@@ -26,13 +26,19 @@ import "slick-carousel/slick/slick-theme.css";
 export enum TitleType {
   Movie = "movie",
   Serie = "tv",
+  Key = "key",
 }
 
 export interface TitleProps {
   type: TitleType;
   id: number | string;
-  video: boolean;
   key: number | string;
+}
+
+export interface VideoProps {
+  key: number | string;
+  id: number | string;
+  type: TitleType;
 }
 
 const App = () => {
@@ -67,7 +73,7 @@ const App = () => {
   //   return [];
   // };
 
-  const getTitle = async ({ type, id }: TitleProps) => {
+  const getTitle = async ({ type, id, key }: TitleProps) => {
     setLoading(true);
     const title = await fetch(`${URL}/${type}/${id}${APISTRING}`);
     const titleData = await title.json();

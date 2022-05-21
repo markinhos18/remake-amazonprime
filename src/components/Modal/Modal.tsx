@@ -2,48 +2,51 @@ import React from "react";
 import emitter from "../../utils/eventEmitter";
 
 import CONST from "../../data/constants";
-import { TitleType } from "../../App";
+import { TitleProps, TitleType } from "../../App";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faPlay } from "@fortawesome/free-solid-svg-icons";
 
-// import { Movie } from "../../data/mock";
+import { Movie } from "../../data/mock";
 // import { Video } from "../../data/video";
 
 // import Score from "../Score/Score";
 
 import "./Modal.scss";
 
-const Modal = ({
-  cover,
-  backdrop_path,
-  poster_path,
-  original_title,
-  original_name,
-  title,
-  genre_ids,
-  genres,
-  created_by,
-  original_language,
-  name,
-  vote_average,
-  certification_country,
-  runtime,
-  number_of_seasons,
-  overview,
-  spoken_languages,
-  video,
-  languages,
-  episode_run_time,
-  release_date,
-  id,
-  key,
-}: any) => {
+const Modal = (
+  {
+    cover,
+    backdrop_path,
+    poster_path,
+    original_title,
+    original_name,
+    title,
+    genre_ids,
+    genres,
+    created_by,
+    original_language,
+    name,
+    vote_average,
+    certification_country,
+    runtime,
+    number_of_seasons,
+    overview,
+    spoken_languages,
+    video,
+    languages,
+    episode_run_time,
+    release_date,
+    id,
+    key,
+  }: any,
+  index: number
+) => {
   const { IMAGEURL } = CONST;
 
   const handleClickVideo = () => {
-    const type = original_title ? TitleType.Movie : TitleType.Serie; // TODO: IMPROVE
-    emitter.emit(CONST.EVENTS.VideoClick, { type, id });
+    const type = id ? TitleType.Movie : TitleType.Serie; // TODO: IMPROVE
+    emitter.emit(CONST.EVENTS.VideoClick, { type, id, key });
   };
 
   const handleClick = () => {
@@ -55,7 +58,7 @@ const Modal = ({
       <article className="modal w-full h-full grid  bg-gray-900 shadow-2xl ">
         <div className="flex justify-end ">
           <FontAwesomeIcon
-            className="cursor-pointer z-50 absolute "
+            className="cursor-pointer z-50 absolute  right-0 lg:right-5 top-0 lg:top-5"
             icon={faTimesCircle}
             size="2x"
             onClick={handleClick}
@@ -67,7 +70,7 @@ const Modal = ({
           />
         </div>
 
-        <div className="modalbg  h-full p-5  lg:p-12 md:relative  lg:absolute text-left  ">
+        <div className="modalbg  h-full p-5  lg:p-12   relative  lg:absolute text-left  ">
           <h1 className="text-5xl pb-5 font-bold">
             {original_title ? original_title : original_name}
           </h1>
@@ -145,22 +148,23 @@ const Modal = ({
 
           <div
             className="flex items-center mt-8 rounded-md py-3 bg-sky-700 justify-center w-40 cursor-pointer"
+            key={index}
             onClick={handleClickVideo}
           >
             <FontAwesomeIcon icon={faPlay} className="pr-2" size="2x" />
-            <b>Reproduzir</b>
+            <b>Play now</b>
           </div>
 
           <div className="dv-dp-node-bottom _2T-E4t mt-8">
             <div className="pb-9">
               <span className="_36qUej">
-                Ao clicar em Reproduzir, você concorda com nossos
+                By clicking Play, you agree to our
                 <a
                   href="https://www.primevideo.com/help/ref=atv_dp_terms?language=pt_br&nodeId=202095490"
                   className="link-footer text-sm md:text-base pl-1"
                   target="_blank"
                 >
-                  Termos de uso.
+                  terms of use.
                 </a>
               </span>
             </div>
@@ -198,7 +202,7 @@ const Modal = ({
                     data-automation-id="share-button"
                     data-testid="share-button"
                   >
-                    <span className="_36qUej">Compartilhar</span>
+                    <span className="_36qUej">Share</span>
                   </button>
                 </span>
               </div>
@@ -287,7 +291,7 @@ const Modal = ({
                       href="https://www.primevideo.com/help/ref=atv_dp_fb_need_help?language=pt_br"
                       target="_blank"
                     >
-                      Ajuda
+                      Help
                     </a>
                   </span>
                 </span>
