@@ -45,7 +45,7 @@ const Modal = (
   const { IMAGEURL } = CONST;
 
   const handleClickVideo = () => {
-    const type = id ? TitleType.Movie : TitleType.Serie; // TODO: IMPROVE
+    const type = original_title ? TitleType.Movie : TitleType.Serie; // TODO: IMPROVE
     emitter.emit(CONST.EVENTS.VideoClick, { type, id, key });
   };
 
