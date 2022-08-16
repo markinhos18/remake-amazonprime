@@ -1,4 +1,3 @@
-import React from "react";
 
 import logofooter from "../../assets/logo-amazon-white.png";
 

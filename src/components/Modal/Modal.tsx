@@ -1,13 +1,13 @@
-import React from "react";
+
 import emitter from "../../utils/eventEmitter";
 
 import CONST from "../../data/constants";
-import { TitleProps, TitleType } from "../../App";
+import {  TitleType } from "../../App";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faPlay } from "@fortawesome/free-solid-svg-icons";
 
-import { Movie } from "../../data/mock";
+// import { Movie } from "../../data/mock";
 // import { Video } from "../../data/video";
 
 // import Score from "../Score/Score";
@@ -159,8 +159,7 @@ const Modal = (
             <div className="pb-9">
               <span className="_36qUej">
                 By clicking Play, you agree to our
-                <a
-                  href="https://www.primevideo.com/help/ref=atv_dp_terms?language=pt_br&nodeId=202095490"
+                <a href="https://www.primevideo.com/help/ref=atv_dp_terms?language=pt_br&nodeId=202095490"
                   className="link-footer text-sm md:text-base pl-1"
                   target="_blank"
                 >

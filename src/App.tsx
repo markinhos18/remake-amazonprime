@@ -49,8 +49,8 @@ const App = () => {
   const [action, setGenreAction] = useState<GenreAction>({} as GenreAction);
   const [horror, setGenreHorror] = useState<GenreHorror>({} as GenreHorror);
   const [comedy, setGenreComedy] = useState<GenreComedy>({} as GenreComedy);
-  const [video, setVideo] = useState();
-  const [title, setTitle] = useState();
+  const [video, setVideo] = useState<any>();
+  const [title, setTitle] = useState<any>();
   const [loading, setLoading] = useState(true);
 
   // useEffect(() => movies && console.log(movies), [movies]);
@@ -139,7 +139,7 @@ const App = () => {
     fetchData();
 
     // return emitter.removeAllListeners();
-  }, []);
+  }, [APISTRING, URL, getTitle, getVideo]);
 
   // useEffect(() => title && console.log(title), [title]);
 

@@ -1,4 +1,4 @@
-import React from "react";
+
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faPlay, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { MovieProps } from "../../data/movies";

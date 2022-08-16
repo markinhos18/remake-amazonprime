@@ -1,4 +1,3 @@
-import react from "react";
 
 import loading from "../../assets/loading.gif";
 import logo from "../../assets/logo-amazon-white.png";
