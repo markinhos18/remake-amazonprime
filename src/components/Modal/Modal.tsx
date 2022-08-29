@@ -159,10 +159,7 @@ const Modal = (
             <div className="pb-9">
               <span className="_36qUej">
                 By clicking Play, you agree to our
-                <a href="https://www.primevideo.com/help/ref=atv_dp_terms?language=pt_br&nodeId=202095490"
-                  className="link-footer text-sm md:text-base pl-1"
-                  target="_blank"
-                >
+                <a href="https://www.primevideo.com/help/ref=atv_dp_terms?language=pt_br&nodeId=202095490" className="link-footer text-sm md:text-base pl-1" target="_blank">
                   terms of use.
                 </a>
               </span>
@@ -286,10 +283,7 @@ const Modal = (
                   data-testid="get-help-link"
                 >
                   <span className="_36qUej">
-                    <a
-                      href="https://www.primevideo.com/help/ref=atv_dp_fb_need_help?language=pt_br"
-                      target="_blank"
-                    >
+                    <a href="https://www.primevideo.com/help/ref=atv_dp_fb_need_help?language=pt_br" target="_blank">
                       Help
                     </a>
                   </span>

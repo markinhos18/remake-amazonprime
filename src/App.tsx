@@ -26,7 +26,7 @@ import "slick-carousel/slick/slick-theme.css";
 export enum TitleType {
   Movie = "movie",
   Serie = "tv",
-  Key = "key",
+  // key = "key",
 }
 
 export interface TitleProps {
@@ -36,9 +36,9 @@ export interface TitleProps {
 }
 
 export interface VideoProps {
-  key: number | string;
   id: number | string;
   type: TitleType;
+  key: number | string;
 }
 
 const App = () => {
@@ -81,7 +81,7 @@ const App = () => {
     setLoading(false);
   };
 
-  const getVideo = async ({ type, id, key }: TitleProps) => {
+  const getVideo = async ({ type, id, key }: VideoProps ) => {
     setLoading(true);
     const video = await fetch(`${URL}/${type}/${id}/videos${APISTRING}`);
     const videoData = await video.json();
@@ -139,7 +139,7 @@ const App = () => {
     fetchData();
 
     // return emitter.removeAllListeners();
-  }, [APISTRING, URL, getTitle, getVideo]);
+  }, []);
 
   // useEffect(() => title && console.log(title), [title]);
 
