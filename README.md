@@ -48,4 +48,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Public Project
 
-follow the link to view the project https://primevideo-remake.herokuapp.com
+follow the link to view the project https://remake-amazonprime.vercel.app
